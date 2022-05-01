@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DaftarMenuController;
 use App\Http\Controllers\DaftarBarangSnackController;
+use App\Http\Controllers\PemesananMakananMinumanController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,10 +30,14 @@ Route::get('/daftarmenu/edit/{id}', [DaftarMenuController::class, 'edit']);
 Route::post('daftarmenu/update/{id}', [DaftarMenuController::class, 'update'])->name('daftarmenu.update');
 Route::get('daftarmenu/delete/{id}', [DaftarMenuController::class, 'delete']);
 
-
 Route::get('/daftarbarangsnack', [DaftarBarangSnackController::class, 'index']);
 Route::get('/tambahbarangsnack', [DaftarBarangSnackController::class, 'tambah']);
 Route::post('daftarbarangsnack/store', [DaftarBarangSnackController::class, 'store'])->name('daftarbarangsnack.store');
 Route::get('/daftarbarangsnack/edit/{id}', [DaftarBarangSnackController::class, 'edit']);
 Route::post('daftarbarangsnack/update/{id}', [DaftarBarangSnackController::class, 'update'])->name('daftarbarangsnack.update');
 Route::get('daftarbarangsnack/delete/{id}', [DaftarBarangSnackController::class, 'delete']);
+
+Route::get('/pemesananmakananminuman', [PemesananMakananMinumanController::class, 'index']);
+Route::post('pemesananmakananminuman/{id}', [PemesananMakananMinumanController::class, 'update'])->name('pemesananmakananminuman.update');
+Route::get('pemesanandetail/{id}', [PemesananMakananMinumanController::class, 'detail']);
+Route::get('pemesananmakananminuman/delete/{id}', [PemesananMakananMinumanController::class, 'delete'])->name('pemesananmakananminuman.delete');

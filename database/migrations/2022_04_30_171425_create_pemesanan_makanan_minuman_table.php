@@ -14,8 +14,14 @@ class CreatePemesananMakananMinumanTable extends Migration
     public function up()
     {
         Schema::create('pemesanan_makanan_minuman', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_pemesanan_makanan_minuman');
+            $table->date('tanggal_pemesanan_makanan_minuman');
+            $table->integer('total_pembayaran');
+            $table->string('status',20);
+            $table->integer('id_user')->unsigned();
+
             $table->timestamps();
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
         });
     }
 

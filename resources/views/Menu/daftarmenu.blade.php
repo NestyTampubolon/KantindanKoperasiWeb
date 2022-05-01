@@ -4,14 +4,14 @@
 
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4">Daftar Menu</h1>
+            <h1 class="mt-4">Daftar Makanan dan Minuman</h1>
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
                         <a href={{url('/beranda')}}>Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        <a>Daftar Menu</a>
+                        <a>Daftar Makanan dan Minuman</a>
                     </li>
                 </ol>
             </nav>
