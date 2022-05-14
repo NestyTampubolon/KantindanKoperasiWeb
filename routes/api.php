@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Android\MakananMinumanController;
+use App\Http\Controllers\Android\BarangSnackController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/register', [UserController::class, 'register']);
+Route::get('/beranda', [BerandaController::class, 'index']);
+Route::get('/makanan', [MakananMinumanController::class, 'index']);
+Route::get('/barang', [BarangSnackController::class, 'index']);

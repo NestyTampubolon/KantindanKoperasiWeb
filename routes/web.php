@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DaftarMenuController;
 use App\Http\Controllers\DaftarBarangSnackController;
 use App\Http\Controllers\PemesananMakananMinumanController;
-
+use App\Http\Controllers\DaftarPulsaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,27 +18,33 @@ use App\Http\Controllers\PemesananMakananMinumanController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/beranda', [BerandaController::class, 'index']);
+    Route::get('/daftarmenu', [DaftarMenuController::class, 'index']);
+    Route::get('/tambahmenu', [DaftarMenuController::class, 'tambah']);
+    Route::post('daftarmenu/store', [DaftarMenuController::class, 'store'])->name('daftarmenu.store');
+    Route::get('/daftarmenu/edit/{id}', [DaftarMenuController::class, 'edit']);
+    Route::post('daftarmenu/update/{id}', [DaftarMenuController::class, 'update'])->name('daftarmenu.update');
+    Route::get('daftarmenu/delete/{id}', [DaftarMenuController::class, 'delete']);
+
+    Route::get('/daftarbarangsnack', [DaftarBarangSnackController::class, 'index']);
+    Route::get('/tambahbarangsnack', [DaftarBarangSnackController::class, 'tambah']);
+    Route::post('daftarbarangsnack/store', [DaftarBarangSnackController::class, 'store'])->name('daftarbarangsnack.store');
+    Route::get('/daftarbarangsnack/edit/{id}', [DaftarBarangSnackController::class, 'edit']);
+    Route::post('daftarbarangsnack/update/{id}', [DaftarBarangSnackController::class, 'update'])->name('daftarbarangsnack.update');
+    Route::get('daftarbarangsnack/delete/{id}', [DaftarBarangSnackController::class, 'delete']);
+
+    Route::get('/pemesananmakananminuman', [PemesananMakananMinumanController::class, 'index']);
+    Route::post('pemesananmakananminuman/{id}', [PemesananMakananMinumanController::class, 'update'])->name('pemesananmakananminuman.update');
+    Route::get('pemesanandetail/{id}', [PemesananMakananMinumanController::class, 'detail']);
+    Route::get('pemesananmakananminuman/delete/{id}', [PemesananMakananMinumanController::class, 'delete'])->name('pemesananmakananminuman.delete');
+    
+    
+    Route::get('/daftarpulsa', [DaftarPulsaController::class, 'index']);
+    Route::post('daftarpulsa/store', [DaftarPulsaController::class, 'store'])->name('daftarpulsa.store');
+    Route::post('daftarpulsa/update/{id}', [DaftarPulsaController::class, 'update'])->name('daftarpulsa.update');
+    Route::get('daftarpulsa/delete/{id}', [DaftarPulsaController::class, 'delete']);
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
-Route::get('/beranda', [BerandaController::class, 'index']);
-
-Route::get('/daftarmenu', [DaftarMenuController::class, 'index']);
-Route::get('/tambahmenu', [DaftarMenuController::class, 'tambah']);
-Route::post('daftarmenu/store', [DaftarMenuController::class, 'store'])->name('daftarmenu.store');
-Route::get('/daftarmenu/edit/{id}', [DaftarMenuController::class, 'edit']);
-Route::post('daftarmenu/update/{id}', [DaftarMenuController::class, 'update'])->name('daftarmenu.update');
-Route::get('daftarmenu/delete/{id}', [DaftarMenuController::class, 'delete']);
-
-Route::get('/daftarbarangsnack', [DaftarBarangSnackController::class, 'index']);
-Route::get('/tambahbarangsnack', [DaftarBarangSnackController::class, 'tambah']);
-Route::post('daftarbarangsnack/store', [DaftarBarangSnackController::class, 'store'])->name('daftarbarangsnack.store');
-Route::get('/daftarbarangsnack/edit/{id}', [DaftarBarangSnackController::class, 'edit']);
-Route::post('daftarbarangsnack/update/{id}', [DaftarBarangSnackController::class, 'update'])->name('daftarbarangsnack.update');
-Route::get('daftarbarangsnack/delete/{id}', [DaftarBarangSnackController::class, 'delete']);
-
-Route::get('/pemesananmakananminuman', [PemesananMakananMinumanController::class, 'index']);
-Route::post('pemesananmakananminuman/{id}', [PemesananMakananMinumanController::class, 'update'])->name('pemesananmakananminuman.update');
-Route::get('pemesanandetail/{id}', [PemesananMakananMinumanController::class, 'detail']);
-Route::get('pemesananmakananminuman/delete/{id}', [PemesananMakananMinumanController::class, 'delete'])->name('pemesananmakananminuman.delete');
+Auth::routes();
