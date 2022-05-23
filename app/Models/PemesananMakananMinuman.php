@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class PemesananMakananMinuman extends Model
 {
     use HasFactory;
+
+    protected $table = 'pemesanan_makanan_minuman';
+    protected $primaryKey = 'id_pemesanan_makanan_minuman';
+
+    protected $fillable = ['kode_transaksi', 'tanggal_pemesanan_makanan_minuman','total_pembayaran','total_item','status','id_user','nama_penerima','nomor_telephone','catatan'];
+
+    public function details(){
+        return $this->hasMany(PemesananMakananMinumanDetail::class, "id_pemesanan", "id_pemesanan_makanan_minuman");
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, "id_user", "id_user");
+    }
 }

@@ -20,9 +20,6 @@ class CreatePemesananMakananMinumanDetailTable extends Migration
             $table->integer('kuantitas');
             $table->integer('total_harga');
             $table->timestamps();
-            
-            $table->foreign('id_makanan_minuman')->references('id_makanan_minuman')->on('makanan_minuman')->onDelete('cascade');
-            $table->foreign('id_pemesanan')->references('id_pemesanan_makanan_minuman')->on('pemesanan_makanan_minuman')->onDelete('cascade');
         });
     }
 

@@ -8,7 +8,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href={{url('/beranda')}}>Dashboard</a>
+                        <a href={{url('/')}}>Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a>Daftar Makanan dan Minuman</a>
