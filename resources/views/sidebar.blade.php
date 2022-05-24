@@ -145,9 +145,8 @@
                                 </a>
                             </div>
                         </li>
-            </div>
-            </li>
 
-            </ul>
-            </nav>
-            <!-- End of Topbar -->
+                    </ul>
+                </nav>
+
+                <!-- End of Topbar -->

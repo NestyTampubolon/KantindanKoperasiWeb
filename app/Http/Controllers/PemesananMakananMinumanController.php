@@ -30,13 +30,13 @@ class PemesananMakananMinumanController extends Controller
 
     public function detail($id_pemesanan_makanan_minuman){
         $pemesanandetail = PemesananMakananMinumanDetail::find($id_pemesanan_makanan_minuman);
-        $pemesanan = DB::table('pemesananmakananminuman')
+        $pemesanan = DB::table('pemesanan_makanan_minuman')
                     ->join('users', 'users.id_user','=','pemesanan_makanan_minuman.id_user')
-                    ->select('pemesanan_makanan_minuman.*','users.name','users.nomor_telephone')
+                    ->select('pemesanan_makanan_minuman.*','users.name')
                     ->where('pemesanan_makanan_minuman.id_pemesanan_makanan_minuman','=',$id_pemesanan_makanan_minuman)
                     ->get();
-        $daftarjoin = DB::table('pemesanan_makanan_minumandetail')
-                    ->join('pemesanan_makanan_minuman', 'pemesanan_makanan_minumandetail.id_pemesanan_makanan_minuman','=','pemesanan_makanan_minuman.id_pemesanan_makanan_minuman')
+        $daftarjoin = DB::table('pemesanan_makanan_minuman_detail')
+                    ->join('pemesanan_makanan_minuman', 'pemesanan_makanan_minuman_detail.id_pemesanan','=','pemesanan_makanan_minuman.id_pemesanan_makanan_minuman')
                     ->join('makanan_minuman','pemesanan_makanan_minuman_detail.id_makanan_minuman','=','makanan_minuman.id_makanan_minuman')
                     ->select('pemesanan_makanan_minuman_detail.*','makanan_minuman.*')
                     ->where('pemesanan_makanan_minuman_detail.id_pemesanan','=',$id_pemesanan_makanan_minuman)

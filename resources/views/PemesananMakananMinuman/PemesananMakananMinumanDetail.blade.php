@@ -49,7 +49,7 @@
                                 <tr>
                                     <td><?php echo $nomor++; ?></td>
                                     <td>{{$daftarjoin->nama}}</td>
-                                    <td>{{$daftarjoin->kuantitas_pesan}}</td>
+                                    <td></td>
                                     <td>@currency($daftarjoin->total_harga)</td>
                                 </tr>
                                 @endforeach
