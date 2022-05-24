@@ -50,7 +50,7 @@
                                     <td>@currency($barang->harga)</td>
                                     <td>{{$barang->kategori}}</td>
                                     <td>{{$barang->stok}}</td>
-                                    <td><img src="{{url('gbr_barang/'.$barang->gambar)}}" class="py-1 width=" 50" height="100" alt=""></td>
+                                    <td><img src="{{url('gbr_barang_snack/'.$barang->gambar)}}" class="py-1 width=" 50" height="100" alt=""></td>
                                     <td>
                                         <a href="/daftarbarangsnack/edit/{{$barang->id_barang_snack}}" class="btn btn-primary btn-icon-split">
                                             <span class="icon text-white-50">
