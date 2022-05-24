@@ -50,7 +50,7 @@
                                     <td>@currency($menu->harga)</td>
                                     <td>{{$menu->kategori}}</td>
                                     <td>{{$menu->stok}}</td>
-                                    <td><img src="{{url('gbr_menu/'.$menu->gambar)}}" class="py-1 width=" 50" height="100" alt=""></td>
+                                    <td><img src="{{url('gbr_makanan_minuman/'.$menu->gambar)}}" class="py-1 width=" 50" height="100" alt=""></td>
                                     <td>
                                         <a href="/daftarmenu/edit/{{$menu->id_makanan_minuman}}" class="btn btn-primary btn-icon-split">
                                             <span class="icon text-white-50">

@@ -18,4 +18,12 @@ class MakananMinumanController extends Controller
             'makananminumans' => $makananminuman
         ]);
     }
+
+    public function updatestok(Request $request, $id_makanan_minuman)
+    {
+        $update = MakananMinuman::find($id_makanan_minuman);
+        $update->stok = $request->stok;
+        $update->save();
+        return redirect('daftarmenu')->with('success', "Produk berhasil diubah!");
+    }
 }

@@ -46,7 +46,18 @@
                 <div class="form-group row">
                     <label for="hargatipea" class="col-sm-2 col-form-label">Kategori</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control form-control @error('kategori') is-invalid @enderror" id="kategori" name="kategori" placeholder="Kategori Menu" autofocus value="{{ old('kategori') }}">
+                        <select class="form-control  @error('kategori') is-invalid @enderror" id="exampleFormControlSelect1" id="kategori" name="kategori" autofocus value="{{ old('kategori') }}">
+                            <option>Kategori Menu</option>
+                            <option value="Makanan">Makanan</option>
+                            <option value="Minuman">Minuman</option>
+                            <option value="Jus">Jus</option>
+                            <option value="Daging">Daging</option>
+                            <option value="Mie">Mie</option>
+                            <option value="Dimsum">Dimsum</option>
+                            <option value="Snack">Snack</option>
+                            <option value="Sayuran">Sayuran</option>
+                            <option value="Spageti">Spageti</option>
+                        </select>
                         @error('kategori')
                         <div class="invalid-feedback">
                             {{ $message }}

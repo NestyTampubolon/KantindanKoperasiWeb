@@ -27,6 +27,8 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('/makanan', [MakananMinumanController::class, 'index']);
+Route::put('/makanan/updatestok/{id}', [MakananMinumanController::class, 'updatestok']);
 Route::get('/barang', [BarangSnackController::class, 'index']);
+
 Route::post('checkoutmakanan', [PemesananController::class,'store']);
 Route::get('checkoutmakanan/user/{id}',  [PemesananController::class,'history']);
