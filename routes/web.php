@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DaftarMenuController;
@@ -38,9 +39,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('pemesananmakananminuman/{id}', [PemesananMakananMinumanController::class, 'update'])->name('pemesananmakananminuman.update');
     Route::get('pemesanandetail/{id}', [PemesananMakananMinumanController::class, 'detail']);
     Route::get('pemesananmakananminuman/delete/{id}', [PemesananMakananMinumanController::class, 'delete'])->name('pemesananmakananminuman.delete');
-    
-    
-    Route::get('/daftarpulsa', [DaftarPulsaController::class, 'index']);
+
+
+    Route::get('/daftarpulsa', [DaftarPulsaController::class, 'index'])->name('daftarpulsa.index');
     Route::post('daftarpulsa/store', [DaftarPulsaController::class, 'store'])->name('daftarpulsa.store');
     Route::post('daftarpulsa/update/{id}', [DaftarPulsaController::class, 'update'])->name('daftarpulsa.update');
     Route::get('daftarpulsa/delete/{id}', [DaftarPulsaController::class, 'delete']);

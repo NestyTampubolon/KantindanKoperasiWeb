@@ -44,4 +44,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pemesanan_pulsa()
+    {
+        return $this->hasMany(Pemesanan_Pulsa::class);
+    }
 }

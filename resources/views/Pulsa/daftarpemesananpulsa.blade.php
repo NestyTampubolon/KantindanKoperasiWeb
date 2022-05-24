@@ -15,15 +15,6 @@
                     </li>
                 </ol>
             </nav>
-            <div class=" py-3">
-                <div><button class="btn btn-success btn-icon-split" style="text-align: right;" data-toggle="modal" data-target="#ModalTambah">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        <span class="text">Tambah</span>
-                    </button>
-                </div>
-            </div>
 
             <div class="card mb-4">
                 <div class="card-header">
@@ -36,7 +27,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
+                                    <th>Nomor Pemesanan</th>
+                                    <th>Nomor Telepon</th>
                                     <th>Harga</th>
                                     <th>Action</th>
                                 </tr><?php $nomor = 1; ?>
@@ -47,8 +39,8 @@
                                     <td><?php echo $nomor++; ?></td>
                                     <form action="{{route('daftarpulsa.update',$pulsa->id_pulsa)}}" method="post" enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                        <td><input type="number" class="form-control form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{$pulsa->nama}}" autofocus value="{{ old('nama') }}">
-                                            @error('nama')
+                                        <td><input type="number" class="form-control form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="{{$pulsa->phone_number}}" autofocus value="{{ old('phone_number') }}">
+                                            @error('phone_number')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -116,10 +108,10 @@
                     <form action="{{route('daftarpulsa.store')}}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group row">
-                            <label for="inputnama" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="inputphone_number" class="col-sm-2 col-form-label">phone_number</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Jumlah Pulsa cth:10000" autofocus value="{{ old('nama') }}">
-                                @error('nama')
+                                <input type="number" class="form-control form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" placeholder="Jumlah Pulsa cth:10000" autofocus value="{{ old('phone_number') }}">
+                                @error('phone_number')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

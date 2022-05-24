@@ -6,6 +6,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Android\MakananMinumanController;
 use App\Http\Controllers\Android\BarangSnackController;
+use App\Http\Controllers\Android\PulsaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,3 +27,6 @@ Route::post('/register', [UserController::class, 'register']);
 Route::get('/beranda', [BerandaController::class, 'index']);
 Route::get('/makanan', [MakananMinumanController::class, 'index']);
 Route::get('/barang', [BarangSnackController::class, 'index']);
+
+////////////////////////
+Route::post('store', [PulsaController::class, 'store']);
