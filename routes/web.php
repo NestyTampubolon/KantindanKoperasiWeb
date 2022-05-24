@@ -7,6 +7,7 @@ use App\Http\Controllers\DaftarMenuController;
 use App\Http\Controllers\DaftarBarangSnackController;
 use App\Http\Controllers\PemesananMakananMinumanController;
 use App\Http\Controllers\DaftarPulsaController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,7 @@ use App\Http\Controllers\DaftarPulsaController;
 */
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', [BerandaController::class, 'index']);
+    Route::get('/beranda', [BerandaController::class, 'index']);
     Route::get('/daftarmenu', [DaftarMenuController::class, 'index']);
     Route::get('/tambahmenu', [DaftarMenuController::class, 'tambah']);
     Route::post('daftarmenu/store', [DaftarMenuController::class, 'store'])->name('daftarmenu.store');
@@ -38,8 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('pemesananmakananminuman/{id}', [PemesananMakananMinumanController::class, 'update'])->name('pemesananmakananminuman.update');
     Route::get('pemesanandetail/{id}', [PemesananMakananMinumanController::class, 'detail']);
     Route::get('pemesananmakananminuman/delete/{id}', [PemesananMakananMinumanController::class, 'delete'])->name('pemesananmakananminuman.delete');
-    
-    
+
+
     Route::get('/daftarpulsa', [DaftarPulsaController::class, 'index']);
     Route::post('daftarpulsa/store', [DaftarPulsaController::class, 'store'])->name('daftarpulsa.store');
     Route::post('daftarpulsa/update/{id}', [DaftarPulsaController::class, 'update'])->name('daftarpulsa.update');
@@ -47,4 +48,5 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
+
 Auth::routes();
