@@ -36,9 +36,9 @@ class DaftarMenuController extends Controller
         $makananminuman->kategori = $request->kategori;
         $makananminuman->stok = $request->stok;
 
-        if ($request->hasFile('gambar_menu')) {
-            $file = $request->file('gambar_menu')->getClientOriginalName();
-            $request->file('gambar_menu')->move('gbr_menu', $file);
+        if ($request->hasFile('gambar_produk')) {
+            $file = $request->file('gambar_produk')->getClientOriginalName();
+            $request->file('gambar_produk')->move('gbr_makanan_minuman', $file);
             $makananminuman->gambar = $file;
         }
         $makananminuman->save();
@@ -68,7 +68,7 @@ class DaftarMenuController extends Controller
         if ($request->hasFile('gambar')) {
             $file = $update->gambar;
             $file = $request->file('gambar')->getClientOriginalName();
-            $request->file('gambar')->move('gbr_menu', $file);
+            $request->file('gambar')->move('gbr_makanan_minuman', $file);
             $update->gambar = $file;
             
         }

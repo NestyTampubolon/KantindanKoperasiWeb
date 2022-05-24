@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href={{url('/beranda')}}>
+                <a class="nav-link" href={{url('/')}}>
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Beranda</span></a>
             </li>
@@ -150,9 +150,8 @@
                                 </a>
                             </div>
                         </li>
-            </div>
-            </li>
 
-            </ul>
-            </nav>
-            <!-- End of Topbar -->
+                    </ul>
+                </nav>
+
+                <!-- End of Topbar -->

@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Android\MakananMinumanController;
 use App\Http\Controllers\Android\BarangSnackController;
 use App\Http\Controllers\Android\PulsaController;
+use App\Http\Controllers\Android\PemesananController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,9 +25,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
-Route::get('/beranda', [BerandaController::class, 'index']);
+Route::get('/', [BerandaController::class, 'index']);
 Route::get('/makanan', [MakananMinumanController::class, 'index']);
+
+Route::post('store', [PulsaController::class, 'store']);
+Route::put('/makanan/updatestok/{id}', [MakananMinumanController::class, 'updatestok']);
 Route::get('/barang', [BarangSnackController::class, 'index']);
 
-////////////////////////
-Route::post('store', [PulsaController::class, 'store']);
+Route::post('checkoutmakanan', [PemesananController::class, 'store']);
+Route::get('checkoutmakanan/user/{id}',  [PemesananController::class, 'history']);

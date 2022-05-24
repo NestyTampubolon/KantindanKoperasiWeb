@@ -24,7 +24,7 @@
                 <div class="form-group row">
                     <label for="inputnama" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Nama Menu" autofocus value="{{ old('nama') }}">
+                        <input type="text" class="form-control form-control @error('nama') is-invalid @enderror" id="nama" name="nama" placeholder="Nama Barang" autofocus value="{{ old('nama') }}">
                         @error('nama')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -46,7 +46,27 @@
                 <div class="form-group row">
                     <label for="hargatipea" class="col-sm-2 col-form-label">Kategori</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control form-control @error('kategori') is-invalid @enderror" id="kategori" name="kategori" placeholder="Kategori Menu" autofocus value="{{ old('kategori') }}">
+                        <select class="form-control  @error('kategori') is-invalid @enderror" id="exampleFormControlSelect1" id="kategori" name="kategori" autofocus value="{{ old('kategori') }}">
+                            <option>Kategori Barang</option>
+                            <option value="Kerupuk">Kerupuk</option>
+                            <option value="Roti">Roti</option>
+                            <option value="Pizza">Pizza</option>
+                            <option value="Masker">Masker</option>
+                            <option value="Snack">Snack</option>
+                            <option value="Minuman">Minuman</option>
+                            <option value="Sikat Gigi">Sikat Gigi</option>
+                            <option value="Deodorant">Deodorant</option>
+                            <option value="Vitamin">Vitamin</option>
+                            <option value="Pisau Cukur">Pisau Cukur</option>
+                            <option value="Deterjen">Deterjen</option>
+                            <option value="Shampoo">Shampoo</option>
+                            <option value="Sabun Colek">Sabun Colek</option>
+                            <option value="Plester">Plester</option>
+                            <option value="Box">Box</option>
+                            <option value="Box Lotion">Box Lotion</option>
+                            <option value="Obat">Obat</option>
+                            <option value="Minuman Saset">Minuman Saset</option>
+                        </select>
                         @error('kategori')
                         <div class="invalid-feedback">
                             {{ $message }}

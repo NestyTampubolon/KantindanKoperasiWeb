@@ -36,9 +36,9 @@ class DaftarBarangSnackController extends Controller
         $barangs->kategori = $request->kategori;
         $barangs->stok = $request->stok;
 
-        if ($request->hasFile('gambar_barang')) {
-            $file = $request->file('gambar_barang')->getClientOriginalName();
-            $request->file('gambar_barang')->move('gbr_barang', $file);
+        if ($request->hasFile('gambar_produk')) {
+            $file = $request->file('gambar_produk')->getClientOriginalName();
+            $request->file('gambar_produk')->move('gbr_barang_snack', $file);
             $barangs->gambar = $file;
         }
         $barangs->save();
@@ -68,7 +68,7 @@ class DaftarBarangSnackController extends Controller
         if ($request->hasFile('gambar')) {
             $file = $update->gambar;
             $file = $request->file('gambar')->getClientOriginalName();
-            $request->file('gambar')->move('gbr_barang', $file);
+            $request->file('gambar')->move('gbr_barang_snack', $file);
             $update->gambar = $file;
             
         }

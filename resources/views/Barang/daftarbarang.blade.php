@@ -8,7 +8,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href={{url('/beranda')}}>Dashboard</a>
+                        <a href={{url('/')}}>Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a>Daftar Barang dan Snack</a>
@@ -50,7 +50,7 @@
                                     <td>@currency($barang->harga)</td>
                                     <td>{{$barang->kategori}}</td>
                                     <td>{{$barang->stok}}</td>
-                                    <td><img src="{{url('gbr_barang/'.$barang->gambar)}}" class="py-1 width=" 50" height="100" alt=""></td>
+                                    <td><img src="{{url('gbr_barang_snack/'.$barang->gambar)}}" class="py-1 width=" 50" height="100" alt=""></td>
                                     <td>
                                         <a href="/daftarbarangsnack/edit/{{$barang->id_barang_snack}}" class="btn btn-primary btn-icon-split">
                                             <span class="icon text-white-50">

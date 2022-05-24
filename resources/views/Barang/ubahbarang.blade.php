@@ -47,7 +47,26 @@
                 <div class="form-group row">
                     <label for="hargatipea" class="col-sm-2 col-form-label">Kategori</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control  @error('kategori') is-invalid @enderror" id="kategori" name="kategori" value="{{$barangs->kategori}}">
+                    <select class="form-control  @error('kategori') is-invalid @enderror" id="exampleFormControlSelect1" id="kategori" name="kategori" autofocus value="{{ old('kategori') }}">
+                            <option value="Kerupuk"{{$barangs->kategori == "Kerupuk" ? 'selected' : ''}}>Kerupuk</option>
+                            <option value="Roti"{{$barangs->kategori == "Roti" ? 'selected' : ''}}>Roti</option>
+                            <option value="Pizza"{{$barangs->kategori == "Pizza" ? 'selected' : ''}}>Pizza</option>
+                            <option value="Masker"{{$barangs->kategori == "Masker" ? 'selected' : ''}}>Masker</option>
+                            <option value="Snack"{{$barangs->kategori == "Snack" ? 'selected' : ''}}>Snack</option>
+                            <option value="Minuman"{{$barangs->kategori == "Minuman" ? 'selected' : ''}}>Minuman</option>
+                            <option value="Sikat Gigi"{{$barangs->kategori == "Sikat Gigi" ? 'selected' : ''}}>Sikat Gigi</option>
+                            <option value="Deodorant"{{$barangs->kategori == "Deodorant" ? 'selected' : ''}}>Deodorant</option>
+                            <option value="Vitamin"{{$barangs->kategori == "Vitamin" ? 'selected' : ''}}>Vitamin</option>
+                            <option value="Pisau Cukur"{{$barangs->kategori == "Pisau Cukur" ? 'selected' : ''}}>Pisau Cukur</option>
+                            <option value="Deterjen"{{$barangs->kategori == "Deterjen" ? 'selected' : ''}}>Deterjen</option>
+                            <option value="Shampoo"{{$barangs->kategori == "Shampoo" ? 'selected' : ''}}>Shampoo</option>
+                            <option value="Sabun Colek"{{$barangs->kategori == "Sabun Colek" ? 'selected' : ''}}>Sabun Colek</option>
+                            <option value="Plester"{{$barangs->kategori == "Plester" ? 'selected' : ''}}>Plester</option>
+                            <option value="Box"{{$barangs->kategori == "Box" ? 'selected' : ''}}>Box</option>
+                            <option value="Body Lotion"{{$barangs->kategori == "Body Lotion" ? 'selected' : ''}}>Box Lotion</option>
+                            <option value="Obat"{{$barangs->kategori == "Obat" ? 'selected' : ''}}>Obat</option>
+                            <option value="Minuman Saset"{{$barangs->kategori == "Minuman Saset" ? 'selected' : ''}}>Minuman Saset</option>
+                        </select>
                         @error('kategori')
                         <div class="invalid-feedback">
                             {{ $message }}

@@ -47,7 +47,17 @@
                 <div class="form-group row">
                     <label for="hargatipea" class="col-sm-2 col-form-label">Kategori</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control  @error('kategori') is-invalid @enderror" id="kategori" name="kategori" value="{{$menus->kategori}}">
+                        <select class="form-control  @error('kategori') is-invalid @enderror" id="exampleFormControlSelect1" id="kategori" name="kategori" autofocus value="{{$menus->kategori}}">
+                            <option value="Makanan"{{$menus->kategori == "Makanan" ? 'selected' : ''}}>Makanan</option>
+                            <option value="Minuman"{{$menus->kategori == "Minuman" ? 'selected' : ''}}>Minuman</option>
+                            <option value="Jus"{{$menus->kategori == "Jus" ? 'selected' : ''}}>Jus</option>
+                            <option value="Daging"{{$menus->kategori == "Daging" ? 'selected' : ''}}>Daging</option>
+                            <option value="Mie"{{$menus->kategori == "Mie" ? 'selected' : ''}}>Mie</option>
+                            <option value="Dimsum"{{$menus->kategori == "Dimsum" ? 'selected' : ''}}>Dimsum</option>
+                            <option value="Snack"{{$menus->kategori == "Snack" ? 'selected' : ''}}>Snack</option>
+                            <option value="Sayuran"{{$menus->kategori == "Sayuran" ? 'selected' : ''}}>Sayuran</option>
+                            <option value="Spageti"{{$menus->kategori == "Spageti" ? 'selected' : ''}}>Spageti</option>
+                        </select>
                         @error('kategori')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -69,8 +79,8 @@
                 <div class="form-group row">
                     <label for="hargatipea" class="col-sm-2 col-form-label">Gambar</label>
                     <div class="col-sm-10">
-                        <img src="{{url('gbr_menu/'.$menus->gambar)}}" class="img-preview mb-3 col-sm-5" alt="">
-                        <input type="file" class="form-control  @error('gambar') is-invalid @enderror" id="gambar" name="gambar" value="{{url('gbr_menu/'.$menus->gambar)}}" onchange="previewImage()">
+                        <img src="{{url('gbr_makanan_minuman/'.$menus->gambar)}}" class="img-preview mb-3 col-sm-5" alt="">
+                        <input type="file" class="form-control  @error('gambar') is-invalid @enderror" id="gambar" name="gambar" value="{{$menus->gambar}}" onchange="previewImage()">
                         @error('gambar')
                         <div class="invalid-feedback">
                             {{ $message }}

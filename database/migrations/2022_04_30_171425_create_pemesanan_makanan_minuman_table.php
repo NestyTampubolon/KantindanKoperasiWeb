@@ -15,13 +15,16 @@ class CreatePemesananMakananMinumanTable extends Migration
     {
         Schema::create('pemesanan_makanan_minuman', function (Blueprint $table) {
             $table->increments('id_pemesanan_makanan_minuman');
+            $table->string('kode_transaksi');
             $table->date('tanggal_pemesanan_makanan_minuman');
+            $table->integer('total_item');
             $table->integer('total_pembayaran');
             $table->string('status',20);
             $table->integer('id_user')->unsigned();
-
+            $table->string('nama_penerima')->nullable();
+            $table->string('nomor_telephone')->nullable();
+            $table->string('catatan')->nullable();
             $table->timestamps();
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
         });
     }
 

@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/beranda';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -50,7 +50,7 @@ class LoginController extends Controller
 
         if (auth()->attempt(array('email' => $input['email'], 'password' =>
         $input['password']))) {
-            return redirect('/beranda')->with('success', "Berhasil login!");
+            return redirect('/')->with('success', "Berhasil login!");
         } else {
             return redirect()->route('login');
         }

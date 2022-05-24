@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href={{url('/beranda')}}>Dashboard</a>
+                <a href={{url('/')}}>Dashboard</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
                 <a>Daftar Pemesanan Makanan dan Minuman</a>
@@ -25,7 +25,7 @@
                             <th>No</th>
                             <th>ID Pemesanan</th>
                             <th>Nama</th>
-                            <!-- <th>Tanggal Pemesanan</th> -->
+                            <th>Tanggal Pemesanan</th> 
                             <th>Total Pembayaran</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -35,9 +35,9 @@
                         @foreach($pemesanans as $pemesanan)
                         <tr>
                             <td><?php echo $nomor++; ?></td>
-                            <td>{{$pemesanan->id_pemesanan_makanan_minuman}}</td>
+                            <td>{{$pemesanan->kode_transaksi}}</td>
                             <td>{{$pemesanan->name}}</td>
-                            <!-- <td>{{ Carbon\Carbon::parse($pemesanan->tanggal_pemesanan)->format('d-m-Y') }}</td> -->
+                            <td>{{ Carbon\Carbon::parse($pemesanan->tanggal_pemesanan_makanan_minuman)->format('d-m-Y') }}</td> 
                             <td>@currency($pemesanan->total_pembayaran)</td>
                             <td>
                                 <form action="{{route('pemesananmakananminuman.update',$pemesanan->id_pemesanan_makanan_minuman)}}" method="post" enctype="multipart/form-data">
@@ -54,27 +54,24 @@
                             <td class="text-center">
                                 <button type="submit" class="btn btn-success btn-icon-split">
                                     <a href="" type="submit" class="btn btn-success btn-icon-split">
-                                        <span class="icon text-white-50">
+                                        <span class="text">
                                             <i class="fas fa-check"></i>
                                         </span>
-                                        <span class="text">Simpan</span>
                                     </a></button>
 
                                 </form>
                                 <button class="btn btn-info btn-icon-split">
                                     <a href="pemesanandetail/{{$pemesanan->id_pemesanan_makanan_minuman}}" class="btn btn-info btn-icon-split">
-                                        <span class="icon text-white-50">
+                                        <span class="text">
                                             <i class="fas fa-info"></i>
                                         </span>
-                                        <span class="text">Detail</span>
                                     </a>
                                 </button>
                                 <button class="btn btn-danger btn-icon-split">
                                     <a href="#" class="btn btn-danger btn-icon-split" data-bs-toggle="modal" data-bs-target="#exampleModal{{$pemesanan->id_pemesanan_makanan_minuman}}">
-                                        <span class="icon text-white-50">
+                                        <span class="text">
                                             <i class="fas fa-trash"></i>
                                         </span>
-                                        <span class="text">Hapus</span>
                                     </a>
                                 </button>
                             </td>
