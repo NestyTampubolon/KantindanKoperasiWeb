@@ -28,7 +28,7 @@ class PemesananBarangSnackController extends Controller
     }
 
     public function detail($id_pemesanan_barang_snack){
-        $pemesanandetail = PemesananBarangSnackDetail::find($id_pemesanan_barang_snack);
+        $pemesanandetailbarang = PemesananBarangSnackDetail::find($id_pemesanan_barang_snack);
         $pemesanan = DB::table('pemesanan_barang_snack')
                     ->join('users', 'users.id_user','=','pemesanan_barang_snack.id_user')
                     ->select('pemesanan_barang_snack.*','users.name')
@@ -40,7 +40,7 @@ class PemesananBarangSnackController extends Controller
                     ->select('pemesanan_barang_snack_detail.*','barang_snack.*')
                     ->where('pemesanan_barang_snack_detail.id_pemesanan','=',$id_pemesanan_barang_snack)
                     ->get();
-        return view('PemesananBarangSnack.PemesananBarangSnackDetail',compact('pemesanandetail','pemesanan','daftarjoin'));
+        return view('PemesananBarangSnack.PemesananBarangSnackDetail',compact('pemesanandetailbarang','pemesanan','daftarjoin'));
     }
 
 

@@ -61,7 +61,7 @@
 
                                 </form>
                                 <button class="btn btn-info btn-icon-split">
-                                    <a href="pemesanandetail/{{$pemesanan->pemesanan_barang_snack}}" class="btn btn-info btn-icon-split">
+                                    <a href="pemesanandetailbarang/{{$pemesanan->id_pemesanan_barang_snack}}" class="btn btn-info btn-icon-split">
                                         <span class="text">
                                             <i class="fas fa-info"></i>
                                         </span>

@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\DB;
 class PemesananMakananMinumanController extends Controller
 {
     //
-    public function index(){ 
+    public function index(){
         $pemesanans = DB::table('pemesanan_makanan_minuman')
         ->join('users', 'users.id_user','=','pemesanan_makanan_minuman.id_user')
         ->select('users.name','pemesanan_makanan_minuman.*')
         ->orderBy('created_at', 'desc')
-        ->get();    
+        ->get();
         return view('PemesananMakananMinuman.DaftarPemesananMakananMinuman', compact('pemesanans'));
     }
 
@@ -24,7 +24,7 @@ class PemesananMakananMinumanController extends Controller
         $update = PemesananMakananMinuman::find($id_pemesanan_makanan_minuman);
         $update->status = $request->status;
         $update-> save();
-        return redirect('pemesananmakananminuman')->with('success', "Berhasil mengubah status pemesanan!");  
+        return redirect('pemesananmakananminuman')->with('success', "Berhasil mengubah status pemesanan!");
 
     }
 

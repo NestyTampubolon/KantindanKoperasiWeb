@@ -22,7 +22,7 @@ use App\Http\Controllers\PemesananBarangSnackController;
 */
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', [BerandaController::class, 'index']);
+    Route::get('/beranda', [BerandaController::class, 'index']);
     Route::get('/beranda', [BerandaController::class, 'index']);
     Route::get('/daftarmenu', [DaftarMenuController::class, 'index']);
     Route::get('/tambahmenu', [DaftarMenuController::class, 'tambah']);
@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/pemesananbarangsnack', [PemesananBarangSnackController::class, 'index']);
     Route::post('pemesananbarangsnack/{id}', [PemesananBarangSnackController::class, 'update'])->name('pemesananbarangsnack.update');
-    Route::get('pemesanandetail/{id}', [PemesananBarangSnackController::class, 'detail']);
+    Route::get('pemesanandetailbarang/{id}', [PemesananBarangSnackController::class, 'detail']);
     Route::get('pemesananbarangsnack/delete/{id}', [PemesananBarangSnackController::class, 'delete'])->name('pemesananbarangsnack.delete');
 
     Route::get('/daftarpulsa', [DaftarPulsaController::class, 'index'])->name('daftarpulsa.index');
