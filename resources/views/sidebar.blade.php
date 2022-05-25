@@ -90,7 +90,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="/pemesananbarangsnack">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Barang dan Snack</span></a>
             </li>
