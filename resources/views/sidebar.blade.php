@@ -66,6 +66,11 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Barang dan Snack</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('daftarpulsa.index')}}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Pulsa</span></a>
+            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item {{Request::segment(1) === 'daftarpulsa' ? 'active' : null }}">
@@ -93,11 +98,10 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="/pemesananbarangsnack">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Barang dan Snack</span></a>
             </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

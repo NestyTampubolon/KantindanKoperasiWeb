@@ -8,7 +8,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href={{url('/')}}>Dashboard</a>
+                        <a href={{url('/beranda')}}>Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a>Daftar Pulsa</a>
@@ -24,7 +24,6 @@
                     </button>
                 </div>
             </div>
-
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table mr-1"></i>
@@ -147,8 +146,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 <!-- Footer -->

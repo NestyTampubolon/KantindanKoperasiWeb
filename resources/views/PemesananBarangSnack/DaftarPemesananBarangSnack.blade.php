@@ -1,21 +1,21 @@
 @include('sidebar')
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <h1 class="mt-4">Daftar Pemesanan Makanan dan Minuman</h1>
+    <h1 class="mt-4">Daftar Pemesanan Barang dan Snack</h1>
     <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href={{url('/')}}>Dashboard</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
-                <a>Daftar Pemesanan Makanan dan Minuman</a>
+                <a>Daftar Pemesanan Barang dan Snack</a>
             </li>
         </ol>
     </nav>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Data Tabel Pemesanan Makanan dan Minuman
+            Data Tabel Pemesanan Barang dan Snack
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -37,10 +37,10 @@
                             <td><?php echo $nomor++; ?></td>
                             <td>{{$pemesanan->kode_transaksi}}</td>
                             <td>{{$pemesanan->name}}</td>
-                            <td>{{ Carbon\Carbon::parse($pemesanan->tanggal_pemesanan_makanan_minuman)->format('d-m-Y') }}</td>
+                            <td>{{ Carbon\Carbon::parse($pemesanan->tanggal_pemesanan_barang_snack)->format('d-m-Y') }}</td>
                             <td>@currency($pemesanan->total_pembayaran)</td>
                             <td>
-                                <form action="{{route('pemesananmakananminuman.update',$pemesanan->id_pemesanan_makanan_minuman)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('pemesananbarangsnack.update',$pemesanan->id_pemesanan_barang_snack)}}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class=" row">
                                         <div class="col">
@@ -61,14 +61,14 @@
 
                                 </form>
                                 <button class="btn btn-info btn-icon-split">
-                                    <a href="pemesanandetail/{{$pemesanan->id_pemesanan_makanan_minuman}}" class="btn btn-info btn-icon-split">
+                                    <a href="pemesanandetailbarang/{{$pemesanan->id_pemesanan_barang_snack}}" class="btn btn-info btn-icon-split">
                                         <span class="text">
                                             <i class="fas fa-info"></i>
                                         </span>
                                     </a>
                                 </button>
                                 <button class="btn btn-danger btn-icon-split">
-                                    <a href="#" class="btn btn-danger btn-icon-split" data-bs-toggle="modal" data-bs-target="#exampleModal{{$pemesanan->id_pemesanan_makanan_minuman}}">
+                                    <a href="#" class="btn btn-danger btn-icon-split" data-bs-toggle="modal" data-bs-target="#exampleModal{{$pemesanan->id_pemesanan_barang_snack}}">
                                         <span class="text">
                                             <i class="fas fa-trash"></i>
                                         </span>
@@ -78,7 +78,7 @@
                         </tr>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal{{$pemesanan->id_pemesanan_makanan_minuman}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal{{$pemesanan->id_pemesanan_barang_snack}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <a href="daftarpemesanan/delete/{{$pemesanan->id_pemesanan_makanan_minuman}}" class="btn btn-danger btn-icon-split">
+                                        <a href="daftarpemesanan/delete/{{$pemesanan->id_pemesanan_barang_snack}}" class="btn btn-danger btn-icon-split">
                                             <span class="text">Hapus</span>
                                         </a>
                                     </div>
