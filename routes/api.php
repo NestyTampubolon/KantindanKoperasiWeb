@@ -8,6 +8,7 @@ use App\Http\Controllers\Android\MakananMinumanController;
 use App\Http\Controllers\Android\BarangSnackController;
 use App\Http\Controllers\Android\PulsaController;
 use App\Http\Controllers\Android\PemesananController;
+use App\Http\Controllers\Android\BookingRuanganController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,3 +38,5 @@ Route::get('checkoutmakanan/user/{id}',  [PemesananController::class, 'history']
 
 Route::post('checkoutbarang', [PemesananController::class, 'store']);
 Route::get('checkoutbarang/user/{id}',  [PemesananController::class, 'history']);
+
+Route::post('bookingruangan', [BookingRuanganController::class, 'store']);
