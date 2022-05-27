@@ -37,8 +37,8 @@ Route::get('/barang', [BarangSnackController::class, 'index']);
 Route::post('checkoutmakanan', [PemesananController::class, 'store']);
 Route::get('checkoutmakanan/user/{id}',  [PemesananController::class, 'history']);
 
-Route::post('checkoutbarang', [PemesananController::class, 'store']);
-Route::get('checkoutbarang/user/{id}',  [PemesananController::class, 'history']);
+Route::post('checkoutbarang', [PemesananController::class, 'storeBarangSnack']);
+Route::get('checkoutbarang/user/{id}',  [PemesananController::class, 'historyBarangSnack']);
 
 Route::post('bookingruangan', [BookingRuanganController::class, 'store']);
 Route::get('bookingruangan/user/{id}', [BookingRuanganController::class, 'history']);
