@@ -70,7 +70,7 @@ class PemesananBarangController extends Controller
         foreach ($transaksis as $transaksi) {
             $details = $transaksi->details;
             foreach ($details as $detail) {
-                $detail->produk;
+                $detail->barangsnack;
             }
         }
 
