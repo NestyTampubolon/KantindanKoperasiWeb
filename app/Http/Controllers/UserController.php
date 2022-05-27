@@ -14,10 +14,11 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $validasi = Validator::make($request->all(), [
-            'nim' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users',
             'password' => 'required',
+            'noKTP'  => 'required',
+            'noHandphone'  => 'required',
         ]);
 
         if ($validasi->fails()) {
@@ -26,10 +27,11 @@ class UserController extends Controller
         }
 
         $Users = User::create([
-            'nim' => $request['nim'],
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'noKTP' => $request['noKTP'],
+            'noHandphone' => $request['noHandphone'],
         ]);
 
         if ($Users) {

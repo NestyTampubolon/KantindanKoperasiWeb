@@ -7,9 +7,19 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Pemesanan_Pulsa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Pulsa;
 
 class PulsaController extends Controller
 {
+    public function index()
+    {
+        $pulsa = Pulsa::all();
+        return response()->json([
+            'success' => 1,
+            'message' => 'Get Makanan dan Minuman Berhasil',
+            'pulsa' => $pulsa
+        ]);
+    }
 
     public function store(Request $request)
     {

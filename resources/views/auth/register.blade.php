@@ -35,19 +35,6 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="nim" class="col-md-4 col-form-label text-md-end">{{ __('NIM') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="nim" type="text" class="form-control @error('nim') is-invalid @enderror" name="nim" value="{{ old('nim') }}" required autocomplete="nim" autofocus>
-
-                                @error('nim')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
@@ -98,6 +85,36 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="noKTP" class="col-md-4 col-form-label text-md-end">{{ __('Nomor KTP') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="noKTP" type="text" class="form-control @error('noKTP') is-invalid @enderror" name="noKTP" value="{{ old('noKTP') }}" required autocomplete="noKTP" autofocus>
+
+                                @error('noKTP')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="noHandphone" class="col-md-4 col-form-label text-md-end">{{ __('Nomor Handphone') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="noHandphone" type="text" class="form-control @error('noHandphone') is-invalid @enderror" name="noHandphone" value="{{ old('noHandphone') }}" required autocomplete="noHandphone" autofocus>
+
+                                @error('noHandphone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

@@ -22,8 +22,11 @@ use App\Http\Controllers\PemesananBarangSnackController;
 */
 
 Route::group(['middleware' => ['auth']], function () {
+
+    Route::get('/', [BerandaController::class, 'index']);
+
     Route::get('/beranda', [BerandaController::class, 'index']);
-    Route::get('/beranda', [BerandaController::class, 'index']);
+
     Route::get('/daftarmenu', [DaftarMenuController::class, 'index']);
     Route::get('/tambahmenu', [DaftarMenuController::class, 'tambah']);
     Route::post('daftarmenu/store', [DaftarMenuController::class, 'store'])->name('daftarmenu.store');
