@@ -41,3 +41,4 @@ Route::post('checkoutbarang', [PemesananController::class, 'store']);
 Route::get('checkoutbarang/user/{id}',  [PemesananController::class, 'history']);
 
 Route::post('bookingruangan', [BookingRuanganController::class, 'store']);
+Route::get('bookingruangan/user/{id}', [BookingRuanganController::class, 'history']);

@@ -15,6 +15,7 @@ class CreateBookingRuanganTable extends Migration
     {
         Schema::create('booking_ruangan', function (Blueprint $table) {
             $table->increments('id_booking');
+            $table->string('kode_booking');
             $table->integer('id_user')->unsigned();
             $table->string('tanggal_pemesanan');
             $table->string('nama_ruangan');

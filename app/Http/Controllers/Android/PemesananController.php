@@ -31,7 +31,6 @@ class PemesananController extends Controller
         $status = "VERIFIKASI";
 
 
-
         $dataTransaksi = array_merge($request->all(), [
             'kode_transaksi' => $kode_transaksi,
             'status' => $status,
@@ -55,7 +54,7 @@ class PemesananController extends Controller
             return response()->json([
                 'success' => 1,
                 'message' => 'Transaksi Berhasil',
-                'transaksi' => collect($transaksi)
+                'pemesananmakananminuman' => collect($transaksi)
             ]);
         } else {
             \DB::rollback();
@@ -71,7 +70,7 @@ class PemesananController extends Controller
         foreach ($transaksis as $transaksi) {
             $details = $transaksi->details;
             foreach ($details as $detail) {
-                $detail->produk;
+                $detail->makananminuman;
             }
         }
 
@@ -79,7 +78,7 @@ class PemesananController extends Controller
             return response()->json([
                 'success' => 1,
                 'message' => 'Transaksi Berhasil',
-                'transaksis' => collect($transaksis)
+                'pemesananmakananminumans' => collect($transaksis)
             ]);
         } else {
             $this->error('Transaksi gagal');
