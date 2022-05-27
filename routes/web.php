@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('pemesananbarangsnack/delete/{id}', [PemesananBarangSnackController::class, 'delete'])->name('pemesananbarangsnack.delete');
 
     Route::get('/daftarpulsa', [DaftarPulsaController::class, 'index'])->name('daftarpulsa.index');
+    Route::get('/daftarpulsa/edit/{id}', [DaftarPulsaController::class, 'edit']);
     Route::post('daftarpulsa/store', [DaftarPulsaController::class, 'store'])->name('daftarpulsa.store');
     Route::post('daftarpulsa/update/{id}', [DaftarPulsaController::class, 'update'])->name('daftarpulsa.update');
     Route::get('daftarpulsa/delete/{id}', [DaftarPulsaController::class, 'delete']);
