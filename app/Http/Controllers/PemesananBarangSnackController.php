@@ -19,12 +19,12 @@ class PemesananBarangSnackController extends Controller
         ->get();
         return view('PemesananBarangSnack.DaftarPemesananBarangSnack', compact('pemesanans'));
     }
+    
     public function update(Request $request, $id_pemesanan_barang_snack){
         $update = PemesananBarangSnack::find($id_pemesanan_barang_snack);
         $update->status = $request->status;
         $update-> save();
         return redirect('pemesananbarangsnack')->with('success', "Berhasil mengubah status pemesanan!");
-
     }
 
     public function detail($id_pemesanan_barang_snack){

@@ -29,7 +29,7 @@ class BookingRuanganController extends Controller
         $kode_booking = "BKG/" . now()->format('Y-m-d') . "/" . rand(100, 999);
         $dataBooking = array_merge($request->all(), [
             'kode_booking' => $kode_booking,
-            'status' => 'VERIFIKASI'
+            'status' => 'PERMINTAAN'
         ]);
 
         \DB::beginTransaction();

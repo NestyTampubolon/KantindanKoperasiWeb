@@ -28,7 +28,7 @@ class PemesananController extends Controller
         }
 
         $kode_transaksi = "INV/PYM/" . now()->format('Y-m-d') . "/" . rand(100, 999);
-        $status = "VERIFIKASI";
+        $status = "PERMINTAAN";
 
 
         $dataTransaksi = array_merge($request->all(), [

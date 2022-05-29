@@ -1,21 +1,21 @@
 @include('sidebar')
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <h1 class="mt-4">Daftar Pemesanan Barang dan Snack</h1>
+    <h1 class="mt-4">Daftar Booking Ruangan</h1>
     <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href={{url('/')}}>Dashboard</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
-                <a>Daftar Pemesanan Barang dan Snack</a>
+                <a>Daftar Booking Ruangan</a>
             </li>
         </ol>
     </nav>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Data Tabel Pemesanan Barang dan Snack
+            Data Tabel Booking Ruangan
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -23,31 +23,29 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>ID Pemesanan</th>
+                            <th>ID Booking</th>
                             <th>Nama</th>
-                            <th>Tanggal Pemesanan</th>
-                            <th>Total Pembayaran</th>
+                            <th>Tanggal Booking</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr><?php $nomor = 1; ?>
                     </thead>
                     <tbody>
-                        @foreach($pemesanans as $pemesanan)
+                        @foreach($bookings as $booking)
                         <tr>
                             <td><?php echo $nomor++; ?></td>
-                            <td>{{$pemesanan->kode_transaksi}}</td>
-                            <td>{{$pemesanan->name}}</td>
-                            <td>{{ Carbon\Carbon::parse($pemesanan->tanggal_pemesanan_barang_snack)->format('d-m-Y') }}</td>
-                            <td>@currency($pemesanan->total_pembayaran)</td>
+                            <td>{{$booking->kode_booking}}</td>
+                            <td>{{$booking->name}}</td>
+                            <td>{{$booking->tanggal_pemesanan }}</td>
                             <td>
-                                <form action="{{route('pemesananbarangsnack.update',$pemesanan->id_pemesanan_barang_snack)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('bookingruangan.update',$booking->id_booking)}}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class=" row">
                                         <div class="col">
-                                            <select class="form-control" border="0px" required="required" name="status" aria-label="Default select example" value="{{$pemesanan->status}}">
-                                                <option value="PERMINTAAN"{{$pemesanan->status == "PERMINTAAN" ? 'selected' : ''}}>PERMINTAAN</option>
-                                                <option value="VERIFIKASI"{{$pemesanan->status == "VERIFIKASI" ? 'selected' : ''}}>VERIFIKASI</option>
-                                                <option value="TERIMA"{{$pemesanan->status == "TERIMA" ? 'selected' : ''}}>TERIMA</option>
+                                            <select class="form-control" border="0px" required="required" name="status" aria-label="Default select example" value="{{$booking->status}}">
+                                            <option value="PERMINTAAN"{{$booking->status == "PERMINTAAN" ? 'selected' : ''}}>PERMINTAAN</option>
+                                                <option value="VERIFIKASI"{{$booking->status == "VERIFIKASI" ? 'selected' : ''}}>VERIFIKASI</option>
+                                                <option value="TERIMA"{{$booking->status == "TERIMA" ? 'selected' : ''}}>TERIMA</option>
                                             </select>
                                         </div>
                                     </div>
@@ -62,14 +60,14 @@
 
                                 </form>
                                 <button class="btn btn-info btn-icon-split">
-                                    <a href="pemesanandetailbarang/{{$pemesanan->id_pemesanan_barang_snack}}" class="btn btn-info btn-icon-split">
+                                    <a href="bookingruangandetail/{{$booking->id_booking}}" class="btn btn-info btn-icon-split">
                                         <span class="text">
                                             <i class="fas fa-info"></i>
                                         </span>
                                     </a>
                                 </button>
                                 <button class="btn btn-danger btn-icon-split">
-                                    <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#exampleModal{{$pemesanan->id_pemesanan_barang_snack}}">
+                                    <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#exampleModal{{$booking->id_booking}}">
                                         <span class="text">
                                             <i class="fas fa-trash"></i>
                                         </span>
@@ -79,7 +77,7 @@
                         </tr>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal{{$pemesanan->id_pemesanan_barang_snack}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal{{$booking->id_booking}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -91,7 +89,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <a href="daftarpemesanan/delete/{{$pemesanan->id_pemesanan_barang_snack}}" class="btn btn-danger btn-icon-split">
+                                        <a href="bookingruangan/delete/{{$booking->id_booking}}" class="btn btn-danger btn-icon-split">
                                             <span class="text">Hapus</span>
                                         </a>
                                     </div>
