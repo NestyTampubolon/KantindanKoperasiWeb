@@ -10,7 +10,7 @@
                         <a href={{url('/dashboard')}}>Dashboard</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href={{url('/pemesananbarangsnack')}}>Daftar Pemesanan</a>
+                        <a href={{url('/bookingruangan')}}>Daftar Pemesanan</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a>Daftar Pemesanan Detail</a>
@@ -18,58 +18,35 @@
                 </ol>
             </nav>
             <div class="col-md-6">
-                @foreach($pemesanan as $pemesanans)
+                @foreach($bookings as $booking)
                 <form>
-                <div class="form-group">
-                        <label for="exampleFormControlInput1">Nama Penerima</label>
-                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$pemesanans->nama_penerima}}">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Kode Booking</label>
+                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$booking->kode_booking}}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Nomor Telephone Penerima</label>
-                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$pemesanans->nomor_telephone}}">
+                        <label for="exampleFormControlInput1">Atas Nama</label>
+                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$booking->name}}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Jumlah Item</label>
-                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$pemesanans->total_item}}">
+                        <label for="exampleFormControlInput1">Nama Ruangan</label>
+                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$booking->nama_ruangan}}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Catatan</label>
+                        <label for="exampleFormControlInput1">Jam Mulai</label>
+                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$booking->jam_mulai}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Jam Selesai</label>
+                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$booking->jam_selesai}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Deskripsi</label>
                         <br>
-                        <textarea name="" id="" class="form-control" cols="95" disabled rows="4">{{$pemesanans->catatan}}</textarea>
+                        <textarea name="" class="form-control" id="" cols="95" disabled rows="4">{{$booking->deskripsi}}</textarea>
                     </div>
                 </form>
                 @endforeach
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table mr-1"></i>
-                    Data Tabel Daftar Pemesanan Detail
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Kuantitas</th>
-                                    <th>Total Harga</th>
-                                </tr><?php $nomor = 1; ?>
-                            </thead>
-                            <tbody>
-                                @foreach($daftarjoin as $daftarjoin)
-                                <tr>
-                                    <td><?php echo $nomor++; ?></td>
-                                    <td>{{$daftarjoin->nama}}</td>
-                                    <td>{{$daftarjoin->kuantitas}}</td>
-                                    <td>@currency($daftarjoin->total_harga)</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- Footer -->

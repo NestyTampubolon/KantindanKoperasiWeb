@@ -45,8 +45,9 @@
                                     <div class=" row">
                                         <div class="col">
                                             <select class="form-control" border="0px" required="required" name="status" aria-label="Default select example" value="{{$pemesanan->status}}">
-                                                <option value="{{$pemesanan->status}}">{{$pemesanan->status}}</option>
-                                                <option value="Diterima">Diterima</option>
+                                            <option value="PERMINTAAN"{{$pemesanan->status == "PERMINTAAN" ? 'selected' : ''}}>PERMINTAAN</option>
+                                                <option value="VERIFIKASI"{{$pemesanan->status == "VERIFIKASI" ? 'selected' : ''}}>VERIFIKASI</option>
+                                                <option value="TERIMA"{{$pemesanan->status == "TERIMA" ? 'selected' : ''}}>TERIMA</option>
                                             </select>
                                         </div>
                                     </div>
@@ -68,7 +69,7 @@
                                     </a>
                                 </button>
                                 <button class="btn btn-danger btn-icon-split">
-                                    <a href="#" class="btn btn-danger btn-icon-split" data-bs-toggle="modal" data-bs-target="#exampleModal{{$pemesanan->id_pemesanan_makanan_minuman}}">
+                                    <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#exampleModal{{$pemesanan->id_pemesanan_makanan_minuman}}">
                                         <span class="text">
                                             <i class="fas fa-trash"></i>
                                         </span>
@@ -83,13 +84,13 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+                                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">x</button>
                                     </div>
                                     <div class="modal-body">
                                         Anda yakin menghapusnya?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <a href="daftarpemesanan/delete/{{$pemesanan->id_pemesanan_makanan_minuman}}" class="btn btn-danger btn-icon-split">
                                             <span class="text">Hapus</span>
                                         </a>

@@ -27,7 +27,7 @@ class PemesananBarangController extends Controller
         }
 
         $kode_transaksi = "INV/PYM/" . now()->format('Y-m-d') . "/" . rand(100, 999);
-        $status = "VERIFIKASI";
+        $status = "PERMINTAAN";
 
 
 
@@ -54,7 +54,7 @@ class PemesananBarangController extends Controller
             return response()->json([
                 'success' => 1,
                 'message' => 'Transaksi Berhasil',
-                'transaksi' => collect($transaksi)
+                'pemesananbarangsnack' => collect($transaksi)
             ]);
         } else {
             \DB::rollback();
@@ -70,7 +70,7 @@ class PemesananBarangController extends Controller
         foreach ($transaksis as $transaksi) {
             $details = $transaksi->details;
             foreach ($details as $detail) {
-                $detail->produk;
+                $detail->barangsnack;
             }
         }
 
@@ -78,7 +78,7 @@ class PemesananBarangController extends Controller
             return response()->json([
                 'success' => 1,
                 'message' => 'Transaksi Berhasil',
-                'transaksis' => collect($transaksis)
+                'pemesananbarangsnacks' => collect($transaksis)
             ]);
         } else {
             $this->error('Transaksi gagal');

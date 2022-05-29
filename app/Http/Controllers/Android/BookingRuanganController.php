@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Validator;
 class BookingRuanganController extends Controller
 {
     //
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         //nama, email, password
         $validasi = Validator::make($request->all(), [
             'id_user' => 'required',
@@ -25,8 +26,11 @@ class BookingRuanganController extends Controller
             $val = $validasi->errors()->all();
             return $this->error($val[0]);
         }
-
-        $dataBooking = array_merge($request->all());
+        $kode_booking = "BKG/" . now()->format('Y-m-d') . "/" . rand(100, 999);
+        $dataBooking = array_merge($request->all(), [
+            'kode_booking' => $kode_booking,
+            'status' => 'PERMINTAAN'
+        ]);
 
         \DB::beginTransaction();
         $booking = BookingRuangan::create($dataBooking);
@@ -42,5 +46,22 @@ class BookingRuanganController extends Controller
             \DB::rollback();
             return $this->error('Booking gagal');
         }
-}
+    }
+
+    public function history($id_user) {
+        $bookings = BookingRuangan::with(['user'])->whereHas('user', function ($query) use ($id_user) {
+            $query->where('id_user','=',$id_user);
+        })->orderBy("id_booking", "desc")->get();
+
+
+        if (!empty($bookings)) {
+            return response()->json([
+                'success' => 1,
+                'message' => 'Booking Berhasil',
+                'bookings' => collect($bookings)
+            ]);
+        } else {
+            $this->error('Booking gagal');
+        }
+    }
 }

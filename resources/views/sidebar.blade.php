@@ -34,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href={{url('/')}}>
                 <div class="sidebar-brand-text">Kantin dan Koperasi IT DEL</div>
             </a>
 
@@ -42,7 +42,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                 <a class="nav-link" href={{url('/')}}>
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Beranda</span></a>
@@ -92,12 +92,17 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item {{Request::segment(1) === 'pemesananbarangsnack' ? 'active' : null }}">
                 <a class="nav-link" href="/pemesananbarangsnack">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Barang dan Snack</span></a>
             </li>
 
+            <li class="nav-item {{Request::segment(1) === 'bookingruangan' ? 'active' : null }}">
+                <a class="nav-link" href="/bookingruangan">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Booking Ruangan</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
