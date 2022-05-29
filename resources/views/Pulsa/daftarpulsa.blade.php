@@ -44,29 +44,16 @@
                             <tbody>
                                 @foreach($pulsas as $pulsa)
                                 <tr>
-                                    <td><?php echo $nomor++; ?></td>
+                                    <td>{{$loop-> iteration}}</td>
+                                    <td>{{$pulsa->nama}}</td>
+                                    <td>{{$pulsa->harga}}</td>
+
                                     <form action="{{route('daftarpulsa.update',$pulsa->id_pulsa)}}" method="post" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-                                        <td><input type="number" class="form-control form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{$pulsa->nama}}" autofocus value="{{ old('nama') }}">
-                                            @error('nama')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </td>
-                                        <td><input type="text" class="form-control form-control @error('harga') is-invalid @enderror" id="harga" name="harga" value="@currency($pulsa->harga)" autofocus value="{{ old('harga') }}">
-                                            @error('harga')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </td>
+
                                         <td>
-                                            <button class="btn btn-primary btn-icon-split" type="submit">
-                                                <span class=" icon text-white-50">
-                                                    <i class="fas fa-pen"></i>
-                                                </span>
-                                            </button>
+
+                                            <a class="btn btn-primary" href="{{route('daftarpulsa.edit',$pulsa->id_pulsa)}}"> <i class="fas fa-pen"></i></a>
+
                                             <a class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#exampleModal{{$pulsa->id_pulsa}}">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-trash"></i>

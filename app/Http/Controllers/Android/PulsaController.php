@@ -17,7 +17,7 @@ class PulsaController extends Controller
         $pulsa = Pulsa::all();
         return response()->json([
             'success' => 1,
-            'message' => 'Get Makanan dan Minuman Berhasil',
+            'message' => 'Get Pulsa Berhasil',
             'pulsa' => $pulsa
         ]);
     }
@@ -77,5 +77,4 @@ class PulsaController extends Controller
             $this->error('Transaksi gagal');
         }
     }
-
 }

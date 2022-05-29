@@ -8,18 +8,19 @@ use App\Models\Pulsa;
 class DaftarPulsaController extends Controller
 {
     //
-    public function index(){ 
+    public function index()
+    {
         $pulsas = Pulsa::all();
         return view('Pulsa.daftarpulsa', compact('pulsas'));
     }
-    
+
 
     public function store(Request $request)
     {
         $validatedData = $request->validate(
             [
-                'nama' => 'required|unique:pulsa,nama',
-                'harga' => 'required|integer',
+                'nama' => 'required|unique',
+                'harga' => 'required',
             ]
         );
 
@@ -27,19 +28,26 @@ class DaftarPulsaController extends Controller
         $pulsa->nama = $request->nama;
         $pulsa->harga = $request->harga;
         $pulsa->save();
-        
+
         return redirect('daftarpulsa')->with('success', "Pulsa berhasil ditambahkan!");
     }
 
-    public function update(Request $request, $id_makanan_minuman)
+    public function edit($id_pulsa)
+    {
+        $pulsas = pulsa::find($id_pulsa);
+        return view('Pulsa.editpulsa', compact('pulsas'));
+    }
+
+
+    public function update(Request $request, $id_pulsa)
     {
         $validatedData = $request->validate(
             [
                 'nama' => 'required',
-                'harga' => 'required|integer'
+                'harga' => 'required'
             ]
         );
-        $update = Pulsa::find($id_makanan_minuman);
+        $update = Pulsa::find($id_pulsa);
         $update->nama = $request->nama;
         $update->harga = $request->harga;
         $update->save();
