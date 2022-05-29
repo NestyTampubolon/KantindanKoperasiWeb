@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Deskripsi</label>
                         <br>
-                        <textarea name="" id="" cols="95" disabled rows="4">{{$booking->deskripsi}}</textarea>
+                        <textarea name="" class="form-control" id="" cols="95" disabled rows="4">{{$booking->deskripsi}}</textarea>
                     </div>
                 </form>
                 @endforeach

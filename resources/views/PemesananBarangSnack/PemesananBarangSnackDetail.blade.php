@@ -20,9 +20,22 @@
             <div class="col-md-6">
                 @foreach($pemesanan as $pemesanans)
                 <form>
+                <div class="form-group">
+                        <label for="exampleFormControlInput1">Nama Penerima</label>
+                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$pemesanans->nama_penerima}}">
+                    </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Nomor Telephone Pengirim</label>
+                        <label for="exampleFormControlInput1">Nomor Telephone Penerima</label>
                         <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$pemesanans->nomor_telephone}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Jumlah Item</label>
+                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$pemesanans->total_item}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Catatan</label>
+                        <br>
+                        <textarea name="" id="" class="form-control" cols="95" disabled rows="4">{{$pemesanans->catatan}}</textarea>
                     </div>
                 </form>
                 @endforeach
@@ -49,7 +62,7 @@
                                 <tr>
                                     <td><?php echo $nomor++; ?></td>
                                     <td>{{$daftarjoin->nama}}</td>
-                                    <td></td>
+                                    <td>{{$daftarjoin->kuantitas}}</td>
                                     <td>@currency($daftarjoin->total_harga)</td>
                                 </tr>
                                 @endforeach
