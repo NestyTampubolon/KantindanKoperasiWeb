@@ -15,8 +15,8 @@ class CreatePulsaTable extends Migration
     {
         Schema::create('pulsa', function (Blueprint $table) {
             $table->increments('id_pulsa');
-            $table->string('nama',200);
-            $table->integer('harga');
+            $table->string('nama', 200);
+            $table->string('harga');
             $table->timestamps();
         });
     }
