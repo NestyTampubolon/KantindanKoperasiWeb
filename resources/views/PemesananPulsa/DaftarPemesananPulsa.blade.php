@@ -1,21 +1,21 @@
 @include('sidebar')
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <h1 class="mt-4">Daftar Pemesanan Makanan dan Minuman</h1>
+    <h1 class="mt-4">Daftar Pemesanan Pulsa</h1>
     <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href={{url('/')}}>Dashboard</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
-                <a>Daftar Pemesanan Makanan dan Minuman</a>
+                <a>Daftar Pemesanan Pulsa</a>
             </li>
         </ol>
     </nav>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            Data Tabel Pemesanan Makanan dan Minuman
+            Data Tabel Pemesanan Pulsa
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -25,7 +25,6 @@
                             <th>No</th>
                             <th>ID Pemesanan</th>
                             <th>Nama</th>
-                            <th>Tanggal Pemesanan</th>
                             <th>Total Pembayaran</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -37,10 +36,9 @@
                             <td><?php echo $nomor++; ?></td>
                             <td>{{$pemesanan->kode_transaksi}}</td>
                             <td>{{$pemesanan->name}}</td>
-                            <td>{{ Carbon\Carbon::parse($pemesanan->tanggal_pemesanan_makanan_minuman)->format('d-m-Y') }}</td>
-                            <td>@currency($pemesanan->total_pembayaran)</td>
+                            <td>@currency($pemesanan->harga)</td>
                             <td>
-                                <form action="{{route('pemesananmakananminuman.update',$pemesanan->id_pemesanan_makanan_minuman)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('pemesananpulsa.update',$pemesanan->id_pemesanan_pulsa)}}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class=" row">
                                         <div class="col">
@@ -62,14 +60,14 @@
 
                                 </form>
                                 <button class="btn btn-info btn-icon-split">
-                                    <a href="pemesanandetail/{{$pemesanan->id_pemesanan_makanan_minuman}}" class="btn btn-info btn-icon-split">
+                                    <a href="#" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#exampleModalDetail{{$pemesanan->id_pemesanan_pulsa}}">
                                         <span class="text">
                                             <i class="fas fa-info"></i>
                                         </span>
                                     </a>
                                 </button>
                                 <button class="btn btn-danger btn-icon-split">
-                                    <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#exampleModal{{$pemesanan->id_pemesanan_makanan_minuman}}">
+                                    <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#exampleModal{{$pemesanan->id_pemesanan_pulsa}}">
                                         <span class="text">
                                             <i class="fas fa-trash"></i>
                                         </span>
@@ -78,8 +76,77 @@
                             </td>
                         </tr>
 
+                        <!-- Modal Detail -->
+                        <div class="modal fade" id="exampleModalDetail{{$pemesanan->id_pemesanan_pulsa}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Pemesanan Pulsa Detail</h5>
+                                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                Kode Pemesanan
+                                            </div>
+                                            <div class="col-md-6">
+                                            {{$pemesanan->kode_transaksi}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                               Tanggal Pemesanan
+                                            </div>
+                                            <div class="col-md-6">
+                                            {{ Carbon\Carbon::parse($pemesanan->tanggal_pemesanan)->format('d-m-Y') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                               Nomor Telephone
+                                            </div>
+                                            <div class="col-md-6">
+                                            {{$pemesanan->nomor_telephone}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                               Jumlah Pulsa
+                                            </div>
+                                            <div class="col-md-6">
+                                            {{$pemesanan->nama}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                               Total Pembayaran
+                                            </div>
+                                            <div class="col-md-6">
+                                            @currency($pemesanan->harga)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <a href="pemesananpulsa/delete/{{$pemesanan->id_pemesanan_pulsa}}" class="btn btn-danger btn-icon-split">
+                                            <span class="text">Hapus</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal{{$pemesanan->id_pemesanan_makanan_minuman}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal{{$pemesanan->id_pemesanan_pulsa}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -91,7 +158,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <a href="daftarpemesanan/delete/{{$pemesanan->id_pemesanan_makanan_minuman}}" class="btn btn-danger btn-icon-split">
+                                        <a href="pemesananpulsa/delete/{{$pemesanan->id_pemesanan_pulsa}}" class="btn btn-danger btn-icon-split">
                                             <span class="text">Hapus</span>
                                         </a>
                                     </div>

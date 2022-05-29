@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Pemesanan_Pulsa;
 use App\Http\Controllers\Controller;
+use App\Models\PemesananPulsa;
 use Illuminate\Http\Request;
 use App\Models\Pulsa;
 
@@ -24,7 +25,7 @@ class PulsaController extends Controller
     public function store(Request $request)
     {
         $validasi = Validator::make($request->all(), [
-            'phone_number' => 'required',
+            'nomor_telephone' => 'required',
             'id_pulsa' => 'required',
             'id_user' => 'required'
         ]);
@@ -34,23 +35,47 @@ class PulsaController extends Controller
             return $this->error($val[0]);
         }
 
-        $pulsa = Pemesanan_Pulsa::create([
-            'phone_number' => $request['phone_number'],
-            'id_pulsa' => $request['id_pulsa'],
+        $kode_transaksi = "PLS/PYM/" . now()->format('Y-m-d') . "/" . rand(100, 999);
+        $status = "PERMINTAAN";
+        
+        $dataTransaksi = array_merge($request->all(), [
+            'kode_transaksi' => $kode_transaksi,
+            'status' => $status,
+            'tanggal_pemesanan' => now()
         ]);
 
-        $pulsa['id_user'] = auth()->user()->id_user;
-        $pulsa['id_pulsa'] = Pemesanan_Pulsa::find(1)->pulsa()->id_pulsa;
+        $transaksi = PemesananPulsa::create($dataTransaksi);
 
-        if ($pulsa) {
+
+        if (!empty($transaksi)) {
             return response()->json([
                 'success' => 1,
-                'message' => 'Data berhasil di tambahkan',
-                'pulsa' => $pulsa
+                'message' => 'Transaksi Berhasil',
+                'pemesananpulsa' => collect($transaksi)
             ]);
+        } else {
+            return $this->error('Transaksi gagal');
+        }
+    }
+
+    public function history($id_user) {
+        $transaksis = PemesananPulsa::with(['user'])->whereHas('user', function ($query) use ($id_user) {
+            $query->where('id_user','=',$id_user);
+        })->orderBy("id_pemesanan_pulsa", "desc")->get();
+
+        foreach ($transaksis as $transaksi) {
+            $transaksi->pulsa;
         }
 
-        return $this->error('Tambah Data Gagal');
+        if (!empty($transaksis)) {
+            return response()->json([
+                'success' => 1,
+                'message' => 'Transaksi Berhasil',
+                'pemesananpulsas' => collect($transaksis)
+            ]);
+        } else {
+            $this->error('Transaksi gagal');
+        }
     }
 
 }

@@ -98,6 +98,12 @@
                     <span>Barang dan Snack</span></a>
             </li>
 
+            <!-- Nav Item - Tables -->
+            <li class="nav-item {{Request::segment(1) === 'pemesananpulsa' ? 'active' : null }}">
+                <a class="nav-link" href="/pemesananpulsa">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Pulsa</span></a>
+            </li>
             <li class="nav-item {{Request::segment(1) === 'bookingruangan' ? 'active' : null }}">
                 <a class="nav-link" href="/bookingruangan">
                     <i class="fas fa-fw fa-table"></i>

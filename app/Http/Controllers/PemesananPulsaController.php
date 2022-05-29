@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PemesananPulsa;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -15,78 +16,30 @@ class PemesananPulsaController extends Controller
 
     public function index()
     {
-        $pemesanans = DB::table('pemesanan__pulsa')
-            ->join('users', 'users.id_user', '=', 'pemesanan__pulsa.id_user')
-            ->select('users.name', 'pemesanan_makanan_minuman.*')
-            ->orderBy('created_at', 'desc')
+        $pemesanans = DB::table('pemesanan_pulsa')
+            ->join('users', 'users.id_user', '=', 'pemesanan_pulsa.id_user')
+            ->join('pulsa', 'pulsa.id_pulsa', '=', 'pemesanan_pulsa.id_pulsa')
+            ->select('users.name', 'pemesanan_pulsa.*','pulsa.*')
+            ->orderBy('pemesanan_pulsa.created_at', 'desc')
             ->get();
-        return view('PemesananMakananMinuman.DaftarPemesananMakananMinuman', compact('pemesanans'));
+        return view('PemesananPulsa.DaftarPemesananPulsa', compact('pemesanans'));
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function update(Request $request, $id_pemesanan_pulsa){
+        $update = PemesananPulsa::find($id_pemesanan_pulsa);
+        $update->status = $request->status;
+        $update-> save();
+        return redirect()->back();
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function delete($id_pemesanan_pulsa)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $deletepemesanan = PemesananPulsa::find($id_pemesanan_pulsa);
+        if ($deletepemesanan->delete()) {
+            return redirect()->back();
+        }
     }
 }

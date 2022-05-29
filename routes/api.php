@@ -44,3 +44,7 @@ Route::get('checkoutbarang/user/{id}',  [PemesananBarangController::class, 'hist
 
 Route::post('bookingruangan', [BookingRuanganController::class, 'store']); 
 Route::get('bookingruangan/user/{id}', [BookingRuanganController::class, 'history']);
+
+
+Route::post('checkoutpulsa', [PulsaController::class, 'store']); 
+Route::get('checkoutpulsa/user/{id}', [PulsaController::class, 'history']);

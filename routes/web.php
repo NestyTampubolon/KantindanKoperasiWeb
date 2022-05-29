@@ -10,6 +10,7 @@ use App\Http\Controllers\PemesananMakananMinumanController;
 use App\Http\Controllers\DaftarPulsaController;
 use App\Http\Controllers\PemesananBarangSnackController;
 use App\Http\Controllers\BookingRuanganController;
+use App\Http\Controllers\PemesananPulsaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +58,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('daftarpulsa/update/{id}', [DaftarPulsaController::class, 'update'])->name('daftarpulsa.update');
     Route::get('daftarpulsa/delete/{id}', [DaftarPulsaController::class, 'delete']);
 
+    Route::get('/pemesananpulsa', [PemesananPulsaController::class, 'index']);
+    Route::post('pemesananpulsa/{id}', [PemesananPulsaController::class, 'update'])->name('pemesananpulsa.update');
+    Route::get('pemesananpulsa/delete/{id}', [PemesananPulsaController::class, 'delete'])->name('pemesananpulsa.delete');
 
     Route::get('/bookingruangan', [BookingRuanganController::class, 'index']);
     Route::post('bookingruangan/{id}', [BookingRuanganController::class, 'update'])->name('bookingruangan.update');
