@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <a href="daftarpemesanan/delete/{{$pemesanan->id_pemesanan_barang_snack}}" class="btn btn-danger btn-icon-split">
+                                        <a href="pemesananbarangsnack/delete/{{$pemesanan->id_pemesanan_barang_snack}}" class="btn btn-danger btn-icon-split">
                                             <span class="text">Hapus</span>
                                         </a>
                                     </div>

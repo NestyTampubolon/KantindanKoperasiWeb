@@ -49,7 +49,7 @@ class PemesananMakananMinumanController extends Controller
     {
         $deletepemesanan = PemesananMakananMinuman::find($id_pemesanan_makanan_minuman);
         if ($deletepemesanan->delete()) {
-            return redirect()->back()->with('success', "Berhasil menghapus pemesanan!");
+            return redirect()->back();
         }
     }
 }
