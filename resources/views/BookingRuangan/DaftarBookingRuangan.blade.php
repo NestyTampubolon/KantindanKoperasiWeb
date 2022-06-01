@@ -52,7 +52,7 @@
                             </td>
                             <td class="text-center">
                                 <button type="submit" class="btn btn-success btn-icon-split">
-                                    <a href="" type="submit" class="btn btn-success btn-icon-split">
+                                    <a class="btn btn-success btn-icon-split">
                                         <span class="text">
                                             <i class="fas fa-check"></i>
                                         </span>

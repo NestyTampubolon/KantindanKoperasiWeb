@@ -85,4 +85,15 @@ class PemesananController extends Controller
         }
     }
 
+    public function delete($id_pemesanan_makanan_minuman)
+    {
+        $deletepemesanan = PemesananMakananMinuman::find($id_pemesanan_makanan_minuman);
+        if ($deletepemesanan->delete()) {
+            return response()->json([
+                'success' => 1,
+                'message' => 'Hapus Transaksi Berhasil',
+            ]);
+        }
+    }
+
 }

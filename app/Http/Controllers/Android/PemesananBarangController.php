@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Android;
 
 use App\Http\Controllers\Controller;
+use App\Models\BookingRuangan;
 use App\Models\PemesananBarangSnack;
 use App\Models\PemesananBarangSnackDetail;
 use Illuminate\Http\Request;
@@ -82,6 +83,17 @@ class PemesananBarangController extends Controller
             ]);
         } else {
             $this->error('Transaksi gagal');
+        }
+    }
+
+    public function delete($id_pemesanan)
+    {
+        $deletepemesanan = PemesananBarangSnack::find($id_pemesanan);
+        if ($deletepemesanan->delete()) {
+            return response()->json([
+                'success' => 1,
+                'message' => 'Hapus Transaksi Berhasil',
+            ]);
         }
     }
 }

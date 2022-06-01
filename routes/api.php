@@ -37,14 +37,16 @@ Route::get('/barang', [BarangSnackController::class, 'index']);
 
 Route::post('checkoutmakanan', [PemesananController::class, 'store']);
 Route::get('checkoutmakanan/user/{id}',  [PemesananController::class, 'history']);
+Route::delete('checkoutmakanan/delete/{id}',  [PemesananController::class, 'delete']);
 
 Route::post('checkoutbarang', [PemesananBarangController::class, 'store']);
 Route::get('checkoutbarang/user/{id}',  [PemesananBarangController::class, 'history']);
-
+Route::delete('checkoutbarang/delete/{id}',  [PemesananBarangController::class, 'delete']);
 
 Route::post('bookingruangan', [BookingRuanganController::class, 'store']); 
 Route::get('bookingruangan/user/{id}', [BookingRuanganController::class, 'history']);
-
+Route::delete('bookingruangan/delete/{id}', [BookingRuanganController::class, 'delete']);
 
 Route::post('checkoutpulsa', [PulsaController::class, 'store']); 
 Route::get('checkoutpulsa/user/{id}', [PulsaController::class, 'history']);
+Route::delete('checkoutpulsa/delete/{id}', [PulsaController::class, 'delete']);

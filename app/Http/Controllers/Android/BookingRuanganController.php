@@ -64,4 +64,15 @@ class BookingRuanganController extends Controller
             $this->error('Booking gagal');
         }
     }
+
+    public function delete($id_booking)
+    {
+        $deletebooking = BookingRuangan::find($id_booking);
+        if ($deletebooking->delete()) {
+            return response()->json([
+                'success' => 1,
+                'message' => 'Hapus Transaksi Berhasil',
+            ]);
+        }
+    }
 }

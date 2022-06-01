@@ -77,4 +77,15 @@ class PulsaController extends Controller
             $this->error('Transaksi gagal');
         }
     }
+
+    public function delete($id_pemesanan)
+    {
+        $deletepemesanan = PemesananPulsa::find($id_pemesanan);
+        if ($deletepemesanan->delete()) {
+            return response()->json([
+                'success' => 1,
+                'message' => 'Hapus Transaksi Berhasil',
+            ]);
+        }
+    }
 }

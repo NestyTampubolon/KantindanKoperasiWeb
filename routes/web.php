@@ -67,7 +67,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('bookingruangandetail/{id}', [BookingRuanganController::class, 'detail']);
     Route::get('bookingruangan/delete/{id}', [BookingRuanganController::class, 'delete'])->name('bookingruangan.delete');
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
 Auth::routes();
