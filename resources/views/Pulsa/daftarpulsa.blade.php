@@ -46,7 +46,7 @@
                                 <tr>
                                     <td>{{$loop-> iteration}}</td>
                                     <td>{{$pulsa->nama}}</td>
-                                    <td>{{$pulsa->harga}}</td>
+                                    <td>@currency($pulsa->harga)</td>
 
                                     <form action="{{route('daftarpulsa.update',$pulsa->id_pulsa)}}" method="post" enctype="multipart/form-data">
 

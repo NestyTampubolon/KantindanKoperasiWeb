@@ -17,10 +17,15 @@
                     </li>
                 </ol>
             </nav>
-            <div class="col-md-6">
+            <div class="row">
+            <div class="col-md-4">
                 @foreach($pemesanan as $pemesanans)
                 <form>
-                <div class="form-group">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Tanggal Pemesanan</label>
+                        <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{ Carbon\Carbon::parse($pemesanans->tanggal_pemesanan_barang_snack)->format('d-m-Y') }}">
+                    </div>
+                    <div class="form-group">
                         <label for="exampleFormControlInput1">Nama Penerima</label>
                         <input type="email" class="form-control" disabled id="exampleFormControlInput1" value="{{$pemesanans->nama_penerima}}">
                     </div>
@@ -41,7 +46,7 @@
                 @endforeach
             </div>
 
-            <div class="card mb-4">
+            <div class="card col-md-8">
                 <div class="card-header">
                     <i class="fas fa-table mr-1"></i>
                     Data Tabel Daftar Pemesanan Detail
@@ -70,6 +75,7 @@
                         </table>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
         <!-- Footer -->

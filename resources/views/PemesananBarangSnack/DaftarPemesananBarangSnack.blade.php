@@ -25,7 +25,6 @@
                             <th>No</th>
                             <th>ID Pemesanan</th>
                             <th>Nama</th>
-                            <th>Tanggal Pemesanan</th>
                             <th>Total Pembayaran</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -37,7 +36,6 @@
                             <td><?php echo $nomor++; ?></td>
                             <td>{{$pemesanan->kode_transaksi}}</td>
                             <td>{{$pemesanan->name}}</td>
-                            <td>{{ Carbon\Carbon::parse($pemesanan->tanggal_pemesanan_barang_snack)->format('d-m-Y') }}</td>
                             <td>@currency($pemesanan->total_pembayaran)</td>
                             <td>
                                 <form action="{{route('pemesananbarangsnack.update',$pemesanan->id_pemesanan_barang_snack)}}" method="post" enctype="multipart/form-data">
